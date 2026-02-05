@@ -13,12 +13,15 @@ body,html {
    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .note{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
   background-color: #494949;
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 0.7rem;
   max-width: 20rem;
   color: rgb(255, 253, 249);
-  margin: 10px;
+  margin: 20px;
 }
 .notes{
   display: flex;

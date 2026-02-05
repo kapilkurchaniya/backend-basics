@@ -1,11 +1,14 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 
 const cors = require('cors');
 app.use(cors());
 app.use(express.json());
+app.use(express.static("./public")); //user access kr skta hai public folder k ander ki files ko browsers se 
 
 const noteModel = require('./models/notes.model');
+const { log } = require('console');
 
 app.post('/notes', async (req, res) => {
     const { title, description } = req.body;
@@ -39,6 +42,13 @@ app.patch('/notes/:id', async (req, res) => {
         message: "note updated successfully"
     })
 });
+console.log(__dirname);
+
+app.use('*name', (req,res) => {
+    res.sendFile(path.join(__dirname,"../public/index.html"))
+    //  res.sendFile(path.join(__dirname,"..","/public/index.html"))
+
+})
 
     
 module.exports = app;
