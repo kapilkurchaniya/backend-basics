@@ -5,7 +5,9 @@ function App() {
   const [notes, setNotes] = useState([])
 
   function fetchNotes() {
-    axios.get("https://backend-basics-71ia.onrender.com/notes")
+    axios.get("http://localhost:3000/notes")
+    // axios.get("https://backend-basics-71ia.onrender.com/notes")
+
       .then(res => {
         setNotes(res.data.notes)
       })
@@ -23,7 +25,7 @@ function App() {
 
     const { title, description } = e.target.elements
 
-    axios.post("https://backend-basics-71ia.onrender.com/notes", {
+    axios.post("http://localhost:3000/notes", {
         title: title.value,
         description: description.value
       })
@@ -38,7 +40,9 @@ function App() {
   }
 
   function handleDeleteNote(noteId) {
-    axios.delete(`https://backend-basics-71ia.onrender.com/${noteId}`)
+    axios.delete(`http://localhost:3000/notes/${noteId}`)
+    // axios.delete(`https://backend-basics-71ia.onrender.com${noteId}`)
+    
       .then(() => {
         fetchNotes()
       })
